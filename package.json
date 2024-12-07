@@ -6,7 +6,8 @@
   "author": "owonie <chlehdnjs@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.ts"
+    "start": "node src/index.ts",
+    "dev": "node src/server.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
