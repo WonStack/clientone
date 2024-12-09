@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.ts",
-    "dev": "node src/server.ts"
+    "dev": "node dist/server.js",
+    "build": "npx tsc"
   },
+  "type": "module",
   "devDependencies": {
     "@types/node": "^22.10.1",
     "ts-node": "^10.9.2",
