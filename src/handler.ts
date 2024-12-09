@@ -5,12 +5,14 @@ import path from "path";
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
 
-export function productHandler(req: IncomingMessage, res: ServerResponse) {
+export function handler(req: IncomingMessage, res: ServerResponse) {
   if (!req.url) {
     return;
   }
-  const id = req.url.split("/").pop();
-  const filePath = path.join(__dirname, "html", `${req.url}.html`);
+
+  const pageIndex = req.url === "/" ? "index.html" : `${req.url}.html`;
+  const filePath = path.join(__dirname, "html", pageIndex);
+
   fs.readFile(filePath, "utf-8", (err, data) => {
     if (err) {
       res.statusCode = 500;
@@ -21,6 +23,5 @@ export function productHandler(req: IncomingMessage, res: ServerResponse) {
       res.end(data);
     }
   });
-  console.log(id);
-  return id;
+  console.log("connect to page:", req.url);
 }
